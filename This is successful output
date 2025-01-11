@@ -12,6 +12,7 @@ void setup() {
   pinMode(48,OUTPUT);
   pinMode(50,OUTPUT);
   pinMode(52,OUTPUT);
+  Serial.begin(9600);
 }
 
   // put your main code here, to run repeatedly:
@@ -139,6 +140,18 @@ void setup() {
         }
         digitalWrite(46,1);
       }
+      //Idk how this will work yet VVVVV. 
+      void MuMaster(int base, int mu){
+        AlphaMaster(base);
+        delay(5);
+        BetaMaster(mu);
+      }
+      void ChiMaster(int chi){
+        int omega = (chi/10)%10;
+        int charlie = (chi % 10);
+        MuMaster(omega,charlie);
+      }
+      //Above is crap.
   };
   class masterMin{
     public:
@@ -266,19 +279,42 @@ void pinConfig(int s){
       break;
   }
 }
-void loop(){
+int a=4;
+int b=3;
+int c;
+int d;
+void GroundMtpx(){
   masterHr testh;
   masterMin testm;
-  testh.AlphaMaster(3);
+  testh.AlphaMaster(a);
   pinConfig(1);
-  delay(5);
-  testh.BetaMaster(2);
+
+  delay(3);
+  testh.BetaMaster(b);
   pinConfig(2);
-  delay(5);
-  testm.GammaMaster(1);
+
+  delay(3);
+  testm.GammaMaster(c);
   pinConfig(3);
-  delay(5);
-  testm.DeltaMaster(0);
+
+  delay(3);
+  testm.DeltaMaster(d);
   pinConfig(4);
-  delay(5);
-}
+
+  delay(3);
+  }
+void loop(){
+  
+  masterHr testh;
+  masterMin testm;
+  int seconds;
+  int hour=99;
+  int minute=99;
+
+  a=(hour/10)%10;
+  b=(hour%10);
+  c=(minute/10)%10;
+  d=(minute%10);
+  GroundMtpx();
+
+  }
