@@ -1,0 +1,284 @@
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(23,OUTPUT);
+  pinMode(25,OUTPUT);
+  pinMode(27,OUTPUT);
+  pinMode(29,OUTPUT);
+  pinMode(31,OUTPUT);
+  pinMode(33,OUTPUT);
+  pinMode(35,OUTPUT);
+  pinMode(44,OUTPUT);
+  pinMode(46,OUTPUT);
+  pinMode(48,OUTPUT);
+  pinMode(50,OUTPUT);
+  pinMode(52,OUTPUT);
+}
+
+  // put your main code here, to run repeatedly:
+  class DW {
+    public:
+      void DWV (bool Bb, bool Fb, bool Jb, bool Hb, bool Gb, bool Cb, bool Kb){
+        digitalWrite(23,Bb);
+        digitalWrite(25,Fb);
+        digitalWrite(27,Jb);
+        digitalWrite(29,Hb);
+        digitalWrite(31,Gb);
+        digitalWrite(33,Cb);
+        digitalWrite(35,Kb);
+      }
+  };
+  class State{
+    public:
+      DW zeta;
+        void s0(){
+          zeta.DWV(1,1,1,1,1,1,0);
+        }
+        void s1(){
+          zeta.DWV(0,1,1,0,0,0,0);
+        }
+        void s2(){
+          zeta.DWV(1,1,0,1,1,0,1);
+        }
+        void s3(){
+          zeta.DWV(1,1,1,1,0,0,1);
+        }
+        void s4(){
+          zeta.DWV(0,1,1,0,0,1,1);
+        }
+        void s5(){
+          zeta.DWV(1,0,1,1,0,1,1);
+        }
+        void s6(){
+          zeta.DWV(0,0,1,1,1,1,1);
+        }
+        void s7(){
+          zeta.DWV(1,1,1,0,0,0,0);
+        }
+        void s8(){
+          zeta.DWV(1,1,1,1,1,1,1);
+        }
+        void s9(){
+          zeta.DWV(1,1,1,0,0,1,1);
+        }
+  };
+  class masterHr{
+    public:
+      State SV;
+      void AlphaMaster(int HRV){
+        switch(HRV){
+          case(0):
+            SV.s0();
+            break;
+          case(1):
+            SV.s1();
+            break;
+          case(2):
+            SV.s2();
+            break;
+          case(3):
+            SV.s3();
+            break;
+          case(4):
+            SV.s4();
+            break;
+          case(5):
+            SV.s5();
+            break;
+          case(6):
+            SV.s6();
+            break;
+          case(7):
+            SV.s7();
+            break;
+          case(8):
+            SV.s8();
+            break;
+          case(9):
+            SV.s9();
+            break;
+          default:
+            break;
+        }
+        digitalWrite(44,1);
+      }
+      void BetaMaster(int BRV){
+        
+        switch(BRV){
+          case(0):
+            SV.s0();
+            break;
+          case(1):
+            SV.s1();
+            break;
+          case(2):
+            SV.s2();
+            break;
+          case(3):
+            SV.s3();
+            break;
+          case(4):
+            SV.s4();
+            break;
+          case(5):
+            SV.s5();
+            break;
+          case(6):
+            SV.s6();
+            break;
+          case(7):
+            SV.s7();
+            break;
+          case(8):
+            SV.s8();
+            break;
+          case(9):
+            SV.s9();
+            break;
+          default:
+            break;
+        }
+        digitalWrite(46,1);
+      }
+  };
+  class masterMin{
+    public:
+    State TV;
+      void GammaMaster(int HRV){
+        switch(HRV){
+          case(0):
+            TV.s0();
+            break;
+          case(1):
+            TV.s1();
+            break;
+          case(2):
+            TV.s2();
+            break;
+          case(3):
+            TV.s3();
+            break;
+          case(4):
+            TV.s4();
+            break;
+          case(5):
+            TV.s5();
+            break;
+          case(6):
+            TV.s6();
+            break;
+          case(7):
+            TV.s7();
+            break;
+          case(8):
+            TV.s8();
+            break;
+          case(9):
+            TV.s9();
+            break;
+          default:
+            break;
+        }
+        digitalWrite(48,1);
+      }
+      void DeltaMaster(int HRV){
+        switch(HRV){
+          case(0):
+            TV.s0();
+            break;
+          case(1):
+            TV.s1();
+            break;
+          case(2):
+            TV.s2();
+            break;
+          case(3):
+            TV.s3();
+            break;
+          case(4):
+            TV.s4();
+            break;
+          case(5):
+            TV.s5();
+            break;
+          case(6):
+            TV.s6();
+            break;
+          case(7):
+            TV.s7();
+            break;
+          case(8):
+            TV.s8();
+            break;
+          case(9):
+            TV.s9();
+            break;
+          default:
+            break;
+        }
+        digitalWrite(50,1);
+      }
+
+  };
+  void seg1(bool o){
+      digitalWrite(44,o);
+    }
+    void seg2(bool o){
+      digitalWrite(46,o);
+    }
+    void seg3(bool o){
+      digitalWrite(48,o);
+    }
+  void seg4(bool o){
+    digitalWrite(50,o);
+  } 
+void pinConfig(int s){
+  seg1(0);
+  seg2(0);
+  seg3(0);
+  seg4(0);
+  switch(s){
+    case(1):
+      seg1(1);
+      seg2(0);
+      seg3(0);
+      seg4(0);
+      
+      break;
+    case(2):
+      seg1(0);
+      seg2(1);
+      seg3(0);
+      seg4(0);
+      break;
+    case(3):
+      seg1(0);
+      seg2(0);
+      seg3(1);
+      seg4(0);
+      break;
+    case(4):
+      seg1(0);
+      seg2(0);
+      seg3(0);
+      seg4(1);
+      break;
+    default: 
+      break;
+  }
+}
+void loop(){
+  masterHr testh;
+  masterMin testm;
+  testh.AlphaMaster(3);
+  pinConfig(1);
+  delay(5);
+  testh.BetaMaster(2);
+  pinConfig(2);
+  delay(5);
+  testm.GammaMaster(1);
+  pinConfig(3);
+  delay(5);
+  testm.DeltaMaster(0);
+  pinConfig(4);
+  delay(5);
+}
