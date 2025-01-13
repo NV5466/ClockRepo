@@ -1,3 +1,8 @@
+
+unsigned long currentMillis;
+unsigned long previousMillis = 0;
+int period = 1000;
+
 void setup() {
   // put your setup code here, to run once:
   pinMode(23,OUTPUT);
@@ -12,7 +17,8 @@ void setup() {
   pinMode(48,OUTPUT);
   pinMode(50,OUTPUT);
   pinMode(52,OUTPUT);
-  Serial.begin(9600);
+  Serial.begin(115200);
+
 }
 
   // put your main code here, to run repeatedly:
@@ -303,18 +309,53 @@ void GroundMtpx(){
 
   delay(3);
   }
+int numChange(int max){
+  for (int i=0; i<max; i++){
+
+  }
+}
+
+int seconds=0;
+int hour=1;
+int minute=15;
+
+unsigned long currentMin;
+unsigned long previousMin=0;
+int minPeriod = 1000;
 void loop(){
-  
+
+  currentMillis = millis();
+  currentMin = millis();
   masterHr testh;
   masterMin testm;
-  int seconds;
-  int hour=99;
-  int minute=99;
+  
+  if (currentMillis - previousMillis >= period){
+    previousMillis = currentMillis;
+    seconds++;
+  }
+  if (seconds == 60){
+
+    seconds=0;
+    minute += 1;
+    
+  }
+  if (minute == 60){
+    minute=0;
+    hour += 1;
+  }
+  if (hour == 12){
+    hour = 1;
+    minute=0;
+  }
+
 
   a=(hour/10)%10;
   b=(hour%10);
   c=(minute/10)%10;
   d=(minute%10);
+
   GroundMtpx();
+
+
 
   }
